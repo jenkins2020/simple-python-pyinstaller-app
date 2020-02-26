@@ -32,13 +32,13 @@ pipeline {
         stage('Deliver') {
             agent {
                 docker {
-                    args '--entrypoint=""'
-                    image 'cdrx/pyinstaller-linux:python2' 
+                    /* args '--entrypoint=""' */
+                    /* image 'cdrx/pyinstaller-linux:python2' */
+                    image 'debian:stable'
                 }
             }
             steps {
-                sh 'bash -c printenv' 
-                sh 'sudo bash -x /entrypoint.sh' 
+                sh 'sudo apt-get -y install pyinstaller python2' 
                 sh 'pyinstaller --onefile sources/add2vals.py' 
             }
             post {
