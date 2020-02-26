@@ -10,6 +10,7 @@ pipeline {
             agent {
                 docker {
                     image 'python:2-alpine'
+       		    label 'generic_worker'
                 }
             }
             steps {
@@ -20,6 +21,7 @@ pipeline {
             agent {
                 docker {
                     image 'qnib/pytest'
+       		    label 'generic_worker'
                 }
             }
             steps {
@@ -35,6 +37,7 @@ pipeline {
             agent {
                 docker {
                     image 'cdrx/pyinstaller-linux:python2' 
+       		    label 'generic_worker'
                 }
             }
             steps {
