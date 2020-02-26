@@ -38,7 +38,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'sudo apt-get -y install pyinstaller python2' 
+                /* sh 'sudo apt-get -y install pyinstaller python2'  */
                 sh 'pyinstaller --onefile sources/add2vals.py' 
             }
             post {
