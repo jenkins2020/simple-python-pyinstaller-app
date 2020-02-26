@@ -38,7 +38,7 @@ pipeline {
                 docker {
                     image 'cdrx/pyinstaller-linux:python2' 
        		    label 'generic_worker'
-		    args "--entrypoint='/bin/bash /entrypoint.sh'"
+		    args "-u 0:0 --entrypoint='/bin/bash'"
                 }
             }
             steps {
