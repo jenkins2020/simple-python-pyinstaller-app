@@ -32,7 +32,7 @@ pipeline {
         stage('Deliver') {
             agent {
                 docker {
-                    args '--entrypoint /bin/cat'
+                    args '--entrypoint /bin/sh -c "$@"'
                     image 'cdrx/pyinstaller-linux:python2' 
                 }
             }
