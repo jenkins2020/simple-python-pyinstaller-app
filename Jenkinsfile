@@ -37,6 +37,7 @@ pipeline {
                 }
             }
             steps {
+                sh '/entrypoint.sh' 
                 sh 'pyinstaller --onefile sources/add2vals.py' 
             }
             post {
