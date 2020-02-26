@@ -1,5 +1,7 @@
 pipeline {
-    agent none 
+    agent {
+       label 'generic_worker'
+    }
     stages {
         stage('Build') { 
             agent {
