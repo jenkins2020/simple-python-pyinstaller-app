@@ -34,12 +34,13 @@ pipeline {
                 docker {
                     /* args '--entrypoint=""' */
                     /* image 'cdrx/pyinstaller-linux:python2' */
+                    args '-u 0:0'
                     image 'debian:stable'
                 }
             }
             steps {
                 /* sh 'sudo apt-get -y install pyinstaller python2'  */
-                sh 'apt-get -y update && apt-get -y install pip' 
+                sh 'apt-get -y update && apt-get -y install python-setuptools' 
                 sh 'pip install pyinstaller' 
                 sh 'pyinstaller --onefile sources/add2vals.py' 
             }
