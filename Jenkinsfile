@@ -1,8 +1,8 @@
 pipeline {
     agent none
-    options {
-        skipStagesAfterUnstable()
-    }
+        options {
+            skipStagesAfterUnstable()
+        }
     stages {
         stage('Build') {
             agent {
@@ -29,23 +29,22 @@ pipeline {
                 }
             }
         }
-    stages {
         stage('Deliver') { 
             agent {
                 docker {
                     //image 'cdrx/pyinstaller-linux:python2'
                     //args  "--user 0:0 --entrypoint=''"
                     args  "--user 0:0"
-                    //image 'python:3.7-slim'
-                    image 'debian:10-slim'
+                        //image 'python:3.7-slim'
+                        image 'debian:10-slim'
                 }
             }
             steps {
                 //sleep 4
                 sh 'apt-get update -y && apt-get -y install python-pip'
-                sh 'pip install pyinstaller'
-                //sh '/entrypoint.sh'
-                sh 'pyinstaller --onefile sources/add2vals.py' 
+                    sh 'pip install pyinstaller'
+                    //sh '/entrypoint.sh'
+                    sh 'pyinstaller --onefile sources/add2vals.py' 
             }
             post {
                 success {
@@ -55,3 +54,4 @@ pipeline {
         }
     }
 }
+
