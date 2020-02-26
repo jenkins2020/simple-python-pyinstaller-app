@@ -38,7 +38,7 @@ pipeline {
                 docker {
                     image 'cdrx/pyinstaller-linux:python2' 
        		    label 'generic_worker'
-		    args '-u 1000:1000'
+		    args '-u 0:0'
                 }
             }
             steps {
