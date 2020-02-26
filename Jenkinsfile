@@ -40,7 +40,7 @@ pipeline {
             }
             steps {
                 /* sh 'sudo apt-get -y install pyinstaller python2'  */
-                sh 'apt-get -y update && apt-get -y install python-setuptools' 
+                sh 'apt-get -y update && apt-get -y install python-setuptools python-pip python2' 
                 sh 'pip install pyinstaller' 
                 sh 'pyinstaller --onefile sources/add2vals.py' 
             }
