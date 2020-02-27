@@ -14,6 +14,7 @@ pipeline {
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
             }
         }
+
         stage('Test') {
             agent {
                 docker {
@@ -29,13 +30,17 @@ pipeline {
                 }
             }
         }
+
         stage('Deliver') { 
             agent {
                 docker {
-                    image 'cdrx/pyinstaller-linux:python2' 
+                    args  "--user 0:0"
+                    image 'debian:10-slim'
                 }
             }
             steps {
+                sh 'apt-get update -y && apt-get -y install python-pip'
+                sh 'pip install pyinstaller'
                 sh 'pyinstaller --onefile sources/add2vals.py' 
             }
             post {
